@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>lesson-5</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="/app.js" defer></script> -->
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script>
+        let table = document.createElement("table");
+        let letters = "ABCDEFGH";
+        let chessBlack = ["&#9820", "&#9822", "&#9821", "&#9819", "&#9818", "&#9821", "&#9822", "&#9820"];
+        let chessWhite = ["&#9814", "&#9816", "&#9815", "&#9813", "&#9812", "&#9815", "&#9816", "&#9814"];
+        for (let i = 0; i < 10; i++) {
+            let tr = document.createElement('tr');
+            for (let j = 0; j < 10; j++) {
+                let td = document.createElement('td');
+                if (j === 0 && i != 9 && i != 0) {
+                    td.textContent = 9 - i;
+                    tr.appendChild(td);
+                    continue;
+                } if (j === 9 && i != 9 && i != 0) {
+                    td.style.transform = 'rotate(180deg)'
+                    td.textContent = 9 - i;
+                    tr.appendChild(td);
+                    continue;
+                }
+                if (i === 9) {
+                    td.textContent = letters.charAt(j - 1);
+                    td.classList.add('letter');
+                    tr.appendChild(td);
+
+                    continue;
+                }
+                if (i === 0) {
+                    td.style.transform = 'rotate(180deg)'
+                    td.textContent = letters.charAt(j - 1);
+                    td.classList.add('letter');
+                    tr.appendChild(td);
+                    continue;
+                } if (i === 7) {
+
+                    td.innerHTML = "&#9817"
+
+                }
+                if (i === 1 && j != 0) {
+                    td.innerHTML = chessBlack[j - 1]
+                }
+                if (i === 8 && j != 0) {
+                    td.innerHTML = chessWhite[j - 1]
+                }
+
+                if (i === 2) {
+
+                    td.innerHTML = "&#9823"
+
+                }
+
+
+                if (i % 2 == j % 2) {
+                    td.className = "white";
+                } else {
+                    td.className = "black";
+                }
+
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+        document.body.appendChild(table);
+
+    </script>
+</body>
+
+</html>
